@@ -1,13 +1,8 @@
 import { useState, useEffect } from 'react';
 import './global.css';
 import styled from 'styled-components';
-import Nav from './components/Nav';
-import Sidebar from './components/Sidebar';
 import getUserInfo from './services/getUserInfo';
-
-const MainContent = styled.main`
-  padding: 70px 90px 90px 226px;
-`;
+import Layout from './components/Layout';
 
 const Header = styled.header`
   margin-bottom: 77px;
@@ -52,9 +47,7 @@ function App() {
   return (
     data && (
       <div className="App">
-        <Nav />
-        <Sidebar />
-        <MainContent>
+        <Layout>
           <Header>
             <h1>
               Bonjour <strong>{data.userInfos.firstName}</strong>
@@ -64,7 +57,7 @@ function App() {
           <Graphs>
             <span />
           </Graphs>
-        </MainContent>
+        </Layout>
       </div>
     )
   );
