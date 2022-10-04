@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 import './global.css';
 import styled from 'styled-components';
-import getUserInfo from './services/getUserInfo';
+
+/* Services */
+import User from './services/User';
+
+/* Components */
 import Layout from './components/Layout';
-import NutrientCard from './components/NutrientCard';
+/* import NutrientCard from './components/NutrientCard'; */
+import ActivityGraph from './components/ActivityGraph';
 
-import CaloriesIcon from './assets/icons/dashboard/icon_calories.svg';
-import ProteinIcon from './assets/icons/dashboard/icon_protein.svg';
-import CarbsIcon from './assets/icons/dashboard/icon_carbs.svg';
-import FatIcon from './assets/icons/dashboard/icon_fat.svg';
+/* Assets */
+/* import CaloriesIcon from './assets/icons/dashboard/icon_calories.svg'; */
+/* import ProteinIcon from './assets/icons/dashboard/icon_protein.svg'; */
+/* import CarbsIcon from './assets/icons/dashboard/icon_carbs.svg'; */
+/* import FatIcon from './assets/icons/dashboard/icon_fat.svg'; */
 
-const USER_ID = 12;
+const USER_ID = 18;
 
 const Header = styled.header`
   margin-bottom: 77px;
@@ -41,74 +47,88 @@ const Graphs = styled.div`
   }
 `;
 
-const NutrientCards = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
+/* const NutrientCards = styled.div` */
+/*   display: flex; */
+/*   flex-direction: column; */
+/*   gap: 24px; */
+/* `; */
 
 function App() {
-  const [data, setData] = useState();
+  const [userInfo, setUserInfo] = useState();
+  const [userActivity, setUserActivity] = useState();
+  /* const [userAverageSessions, setUserAverageSessions] = useState(); */
+  /* const [userPerformance, setUserPerformance] = useState(); */
+  const user = new User(USER_ID);
 
   useEffect(() => {
     async function getData() {
-      const userInfo = await getUserInfo(USER_ID);
-      setData(userInfo.data);
+      const info = await user.getInfo();
+      const activity = await user.getActivity();
+      /* const averageSessions = await user.getAverageSessions(); */
+      /* const performance = await user.getPerformance(); */
+
+      setUserInfo(info);
+      setUserActivity(activity);
+      /* setUserAverageSessions(averageSessions); */
+      /* setUserPerformance(performance); */
     }
     getData();
   }, []);
 
   return (
-    data && (
-      <div className="App">
-        <Layout>
+    <div className="App">
+      <Layout>
+        {userInfo && (
           <Header>
             <h1>
-              Bonjour <strong>{data.userInfos.firstName}</strong>
+              Bonjour <strong>{userInfo.userInfos.firstName}</strong>
             </h1>
             <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
           </Header>
-          <NutrientCards>
-            {[
-              {
-                icon: CaloriesIcon,
-                label: 'Calories',
-                amount: data.keyData.calorieCount,
-                unit: 'kCal',
-              },
-              {
-                icon: ProteinIcon,
-                label: 'Protéines',
-                amount: data.keyData.proteinCount,
-                unit: 'g',
-              },
-              {
-                icon: CarbsIcon,
-                label: 'Glucides',
-                amount: data.keyData.carbohydrateCount,
-                unit: 'g',
-              },
-              {
-                icon: FatIcon,
-                label: 'Lipides',
-                amount: data.keyData.lipidCount,
-                unit: 'g',
-              },
-            ].map((item) => (
-              <NutrientCard
-                icon={item.icon}
-                amount={item.amount}
-                unit={item.unit}
-                label={item.label}
-              />
-            ))}
-          </NutrientCards>
-          <Graphs>
-            <span />
-          </Graphs>
-        </Layout>
-      </div>
-    )
+        )}
+        {userActivity && <ActivityGraph data={userActivity.sessions} />}
+        {/* {userInfo && ( */}
+        {/*   <NutrientCards> */}
+        {/*     {[ */}
+        {/*       { */}
+        {/*         icon: CaloriesIcon, */}
+        {/*         label: 'Calories', */}
+        {/*         amount: userInfo.keyData.calorieCount, */}
+        {/*         unit: 'kCal', */}
+        {/*       }, */}
+        {/*       { */}
+        {/*         icon: ProteinIcon, */}
+        {/*         label: 'Protéines', */}
+        {/*         amount: userInfo.keyData.proteinCount, */}
+        {/*         unit: 'g', */}
+        {/*       }, */}
+        {/*       { */}
+        {/*         icon: CarbsIcon, */}
+        {/*         label: 'Glucides', */}
+        {/*         amount: userInfo.keyData.carbohydrateCount, */}
+        {/*         unit: 'g', */}
+        {/*       }, */}
+        {/*       { */}
+        {/*         icon: FatIcon, */}
+        {/*         label: 'Lipides', */}
+        {/*         amount: userInfo.keyData.lipidCount, */}
+        {/*         unit: 'g', */}
+        {/*       }, */}
+        {/*     ].map((item) => ( */}
+        {/*       <NutrientCard */}
+        {/*         icon={item.icon} */}
+        {/*         amount={item.amount} */}
+        {/*         unit={item.unit} */}
+        {/*         label={item.label} */}
+        {/*       /> */}
+        {/*     ))} */}
+        {/*   </NutrientCards> */}
+        {/* )} */}
+        <Graphs>
+          <span />
+        </Graphs>
+      </Layout>
+    </div>
   );
 }
 
