@@ -27,10 +27,6 @@ const Background = styled.div`
 `;
 
 function ActivityGraph({ data }) {
-  data.forEach((item, i) => {
-    item.day = i + 1;
-  });
-
   return (
     <Background>
       <h3>Activité quotidienne</h3>
@@ -96,9 +92,9 @@ function ActivityGraph({ data }) {
 ActivityGraph.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      day: PropTypes.string,
-      kilogram: PropTypes.number,
-      calories: PropTypes.number,
+      day: PropTypes.number.isRequired,
+      bodyweight: PropTypes.number.isRequired,
+      calories: PropTypes.number.isRequired,
     })
   ).isRequired,
 };

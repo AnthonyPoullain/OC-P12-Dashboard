@@ -24,9 +24,7 @@ const Background = styled.div`
   }
 `;
 
-function ActivityGraph({ kind, data }) {
-  data.forEach((item, i) => (item.kind = kind[i + 1]));
-
+function PerformanceGraph({ data }) {
   return (
     <Background>
       <ResponsiveContainer width="100%" height={210}>
@@ -47,16 +45,13 @@ function ActivityGraph({ kind, data }) {
   );
 }
 
-ActivityGraph.propTypes = {
+PerformanceGraph.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       day: PropTypes.string,
-      sessionLength: PropTypes.number,
+      sessionDuration: PropTypes.number,
     })
   ).isRequired,
-  kind: PropTypes.shape({
-    day: PropTypes.string,
-  }).isRequired,
 };
 
-export default ActivityGraph;
+export default PerformanceGraph;

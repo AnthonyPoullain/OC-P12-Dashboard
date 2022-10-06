@@ -26,27 +26,19 @@ const Background = styled.div`
     line-height: 24px;
     position: absolute;
     margin-left: 10px;
+    max-width: 150px;
   }
 `;
 
-function ActivityGraph({ data }) {
-  const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-  data.forEach((item, i) => {
-    item.day = days[i];
-  });
-
+function SessionsGraph({ data }) {
   return (
     <Background>
-      <h3>
-        Durée moyenne des
-        <br />
-        sessions
-      </h3>
+      <h3>Durée moyenne des sessions</h3>
       <ResponsiveContainer width="100%" height={215}>
         <LineChart data={data}>
           <CartesianGrid vertical={false} horizontal={false} />
           <YAxis
-            dataKey="sessionLength"
+            dataKey="sessionDuration"
             tickLine={false}
             tickCount={3}
             orientation="right"
@@ -90,7 +82,7 @@ function ActivityGraph({ data }) {
               strokeWidth: '5px',
               stroke: 'rgba(255,255,255,.2)',
             }}
-            dataKey="sessionLength"
+            dataKey="sessionDuration"
             strokeWidth={2}
             type="natural"
             unit="min"
@@ -102,13 +94,13 @@ function ActivityGraph({ data }) {
   );
 }
 
-ActivityGraph.propTypes = {
+SessionsGraph.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      day: PropTypes.string,
-      sessionLength: PropTypes.number,
+      day: PropTypes.string.isRequired,
+      sessionDuration: PropTypes.number.isRequired,
     })
   ).isRequired,
 };
 
-export default ActivityGraph;
+export default SessionsGraph;
