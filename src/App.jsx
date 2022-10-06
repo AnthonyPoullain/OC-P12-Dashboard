@@ -8,7 +8,7 @@ import User from './services/User';
 /* Components */
 import Layout from './components/Layout';
 /* import NutrientCard from './components/NutrientCard'; */
-import ActivityGraph from './components/ActivityGraph';
+/* import ActivityGraph from './components/ActivityGraph'; */
 
 /* Assets */
 /* import CaloriesIcon from './assets/icons/dashboard/icon_calories.svg'; */
@@ -16,7 +16,7 @@ import ActivityGraph from './components/ActivityGraph';
 /* import CarbsIcon from './assets/icons/dashboard/icon_carbs.svg'; */
 /* import FatIcon from './assets/icons/dashboard/icon_fat.svg'; */
 
-const USER_ID = 18;
+const USER_ID = 12;
 
 const Header = styled.header`
   margin-bottom: 77px;
@@ -55,7 +55,7 @@ const Graphs = styled.div`
 
 function App() {
   const [userInfo, setUserInfo] = useState();
-  const [userActivity, setUserActivity] = useState();
+  /* const [userActivity, setUserActivity] = useState(); */
   /* const [userAverageSessions, setUserAverageSessions] = useState(); */
   /* const [userPerformance, setUserPerformance] = useState(); */
   const user = new User(USER_ID);
@@ -63,12 +63,12 @@ function App() {
   useEffect(() => {
     async function getData() {
       const info = await user.getInfo();
-      const activity = await user.getActivity();
+      /* const activity = await user.getActivity(); */
       /* const averageSessions = await user.getAverageSessions(); */
       /* const performance = await user.getPerformance(); */
 
       setUserInfo(info);
-      setUserActivity(activity);
+      /* setUserActivity(activity); */
       /* setUserAverageSessions(averageSessions); */
       /* setUserPerformance(performance); */
     }
@@ -86,7 +86,7 @@ function App() {
             <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
           </Header>
         )}
-        {userActivity && <ActivityGraph data={userActivity.sessions} />}
+        {/* {userActivity && <ActivityGraph data={userActivity.sessions} />} */}
         {/* {userInfo && ( */}
         {/*   <NutrientCards> */}
         {/*     {[ */}

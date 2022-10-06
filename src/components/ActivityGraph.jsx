@@ -34,7 +34,7 @@ function ActivityGraph({ data }) {
   return (
     <Background>
       <h3>Activité quotidienne</h3>
-      <ResponsiveContainer maxWidth={835} width="100%" height={272}>
+      <ResponsiveContainer width="100%" height={272}>
         <BarChart barGap={8} data={data}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <YAxis
@@ -62,10 +62,7 @@ function ActivityGraph({ data }) {
             }}
             labelFormatter={() => ''}
             separator=""
-            formatter={(value, name) => [
-              '',
-              `${value}${name === 'Poids (kg)' ? 'kg' : 'kCal'}`,
-            ]}
+            formatter={(value) => ['', value]}
             active="true"
           />
           <Legend
@@ -77,6 +74,7 @@ function ActivityGraph({ data }) {
           <Bar
             barSize={7}
             name="Poids (kg)"
+            unit="kg"
             dataKey="kilogram"
             fill="#000"
             radius={[10, 10, 0, 0]}
@@ -84,6 +82,7 @@ function ActivityGraph({ data }) {
           <Bar
             barSize={7}
             name="Calories brûlées (kCal)"
+            unit="kCal"
             dataKey="calories"
             fill="var(--color-primary)"
             radius={[10, 10, 0, 0]}
