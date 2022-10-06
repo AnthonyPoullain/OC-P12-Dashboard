@@ -9,6 +9,8 @@ import User from './services/User';
 import Layout from './components/Layout';
 /* import NutrientCard from './components/NutrientCard'; */
 /* import ActivityGraph from './components/ActivityGraph'; */
+/* import SessionsGraph from './components/SessionsGraph'; */
+import PerformanceGraph from './components/PerformanceGraph';
 
 /* Assets */
 /* import CaloriesIcon from './assets/icons/dashboard/icon_calories.svg'; */
@@ -57,7 +59,7 @@ function App() {
   const [userInfo, setUserInfo] = useState();
   /* const [userActivity, setUserActivity] = useState(); */
   /* const [userAverageSessions, setUserAverageSessions] = useState(); */
-  /* const [userPerformance, setUserPerformance] = useState(); */
+  const [userPerformance, setUserPerformance] = useState();
   const user = new User(USER_ID);
 
   useEffect(() => {
@@ -65,12 +67,12 @@ function App() {
       const info = await user.getInfo();
       /* const activity = await user.getActivity(); */
       /* const averageSessions = await user.getAverageSessions(); */
-      /* const performance = await user.getPerformance(); */
+      const performance = await user.getPerformance();
 
       setUserInfo(info);
       /* setUserActivity(activity); */
       /* setUserAverageSessions(averageSessions); */
-      /* setUserPerformance(performance); */
+      setUserPerformance(performance);
     }
     getData();
   }, []);
@@ -86,7 +88,16 @@ function App() {
             <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
           </Header>
         )}
+        {userPerformance && (
+          <PerformanceGraph
+            kind={userPerformance.kind}
+            data={userPerformance.data}
+          />
+        )}
         {/* {userActivity && <ActivityGraph data={userActivity.sessions} />} */}
+        {/* {userAverageSessions && ( */}
+        {/*   <SessionsGraph data={userAverageSessions.sessions} /> */}
+        {/* )} */}
         {/* {userInfo && ( */}
         {/*   <NutrientCards> */}
         {/*     {[ */}

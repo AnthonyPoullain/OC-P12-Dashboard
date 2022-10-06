@@ -15,6 +15,7 @@ const Background = styled.div`
   padding: 24px;
   border-radius: 5px;
   max-height: 320px;
+  max-width: 258px;
   position: relative;
 
   h3 {
