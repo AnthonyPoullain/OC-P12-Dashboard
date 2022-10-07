@@ -12,11 +12,12 @@ import {
 
 const Background = styled.div`
   background-color: var(--color-primary);
-  padding: 24px;
+  padding: 24px 0;
   border-radius: 5px;
   max-height: 320px;
   max-width: 258px;
   position: relative;
+  grid-area: sessions;
 
   h3 {
     color: #fff;
@@ -25,8 +26,12 @@ const Background = styled.div`
     font-size: 15px;
     line-height: 24px;
     position: absolute;
-    margin-left: 10px;
+    left: 34px;
     max-width: 150px;
+  }
+
+  .recharts-line path {
+    /* transform: scaleX(1.2) translateX(-20px); */
   }
 `;
 
@@ -34,7 +39,7 @@ function SessionsGraph({ data }) {
   return (
     <Background>
       <h3>Durée moyenne des sessions</h3>
-      <ResponsiveContainer width="100%" height={215}>
+      <ResponsiveContainer width="100%" height={216}>
         <LineChart data={data}>
           <CartesianGrid vertical={false} horizontal={false} />
           <YAxis
@@ -51,6 +56,7 @@ function SessionsGraph({ data }) {
             dataKey="day"
             tickLine={false}
             axisLine={false}
+            padding={{ left: 14, right: 14 }}
           />
           <Tooltip
             offset={10}
@@ -65,9 +71,8 @@ function SessionsGraph({ data }) {
             itemStyle={{
               fontSize: '8px',
               fontWeight: '500',
-              padding: '0 7px',
               color: '#000',
-              lineHeight: '24px',
+              lineHeight: '0',
             }}
             labelFormatter={() => ''}
             separator=""

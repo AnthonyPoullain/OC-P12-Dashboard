@@ -32,15 +32,20 @@ const Header = styled.header`
   }
 `;
 
-const Graphs = styled.div`
+const Graphs = styled.main`
   display: grid;
-  gap: 30px;
+  gap: 24px 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'activity activity activity nutrients'
+    'sessions performance . nutrients';
 `;
 
 const NutrientCards = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: space-between;
+  grid-area: nutrients;
 `;
 
 function App() {
@@ -82,8 +87,6 @@ function App() {
         )}
         <Graphs>
           {userActivity && <ActivityGraph data={userActivity} />}
-          {userPerformance && <PerformanceGraph data={userPerformance} />}
-          {userAverageSessions && <SessionsGraph data={userAverageSessions} />}
           {userInfo && (
             <NutrientCards>
               {userNutrients.map((item) => (
@@ -97,6 +100,8 @@ function App() {
               ))}
             </NutrientCards>
           )}
+          {userAverageSessions && <SessionsGraph data={userAverageSessions} />}
+          {userPerformance && <PerformanceGraph data={userPerformance} />}
         </Graphs>
       </Layout>
     </div>

@@ -17,6 +17,7 @@ const Background = styled.div`
   border-radius: 5px;
   max-height: 320px;
   position: relative;
+  grid-area: activity;
 
   h3 {
     font-weight: 500;
@@ -27,6 +28,7 @@ const Background = styled.div`
 `;
 
 function ActivityGraph({ data }) {
+  console.log(data);
   return (
     <Background>
       <h3>Activité quotidienne</h3>
@@ -71,7 +73,7 @@ function ActivityGraph({ data }) {
             barSize={7}
             name="Poids (kg)"
             unit="kg"
-            dataKey="kilogram"
+            dataKey="bodyweight"
             fill="#000"
             radius={[10, 10, 0, 0]}
           />

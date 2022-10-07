@@ -83,6 +83,7 @@ class User {
     const { data } = response;
 
     const TRANSLATE = {
+      cardio: 'Cardio',
       energy: 'Energie',
       endurance: 'Endurance',
       strength: 'Force',

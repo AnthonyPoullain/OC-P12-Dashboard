@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Card = styled.div`
-  width: 100%;
+  /* width: 100%; */
   max-width: 258px;
+  max-height: 124px;
   padding: 32px;
   background-color: #fbfbfb;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  gap: 24px;
 
   img {
     width: 60px;
     height: 60px;
+    margin-right: 24px;
   }
 
   p {

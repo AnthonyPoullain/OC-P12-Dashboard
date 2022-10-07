@@ -14,7 +14,7 @@ const SIDEBAR_ICONS = [
   { icon: liftingIcon, alt: 'Strength Training' },
 ];
 
-const SideBar = styled.div`
+const SideBar = styled.aside`
   width: 117px;
   height: 933px;
   background-color: black;
