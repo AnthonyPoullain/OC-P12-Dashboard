@@ -8,11 +8,23 @@ import FatIcon from '../assets/icons/dashboard/icon_fat.svg';
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
+/**
+ * Class representing a user.
+ */
 class User {
+  /**
+   * Create a user.
+   * @param {number} id - The user ID
+   */
   constructor(id) {
     this.id = id;
   }
 
+  /**
+   * Get basic user data.
+   *
+   * @returns {Promise<Object>} Basic user information.
+   */
   async getInfo() {
     const response = await request(`${BASE_URL}/user/${this.id}`);
     const { data } = response;
@@ -24,6 +36,11 @@ class User {
     };
   }
 
+  /**
+   * Get user calories & macronutrients data.
+   *
+   * @returns {Promise<Array<Object>>} List of information about calories & macronutrients.
+   */
   async getNutrients() {
     const response = await request(`${BASE_URL}/user/${this.id}`);
     const { data } = response;
@@ -55,6 +72,11 @@ class User {
     ];
   }
 
+  /**
+   * Get user activity data.
+   *
+   * @returns {Promise<Array<Object>>} List of informaton about user sessions.
+   */
   async getActivity() {
     const response = await request(`${BASE_URL}/user/${this.id}/activity`);
     const { data } = response;
@@ -66,6 +88,11 @@ class User {
     }));
   }
 
+  /**
+   * Get user sessions data.
+   *
+   * @returns {Promise<Array<Object>>} List of information about user sessions.
+   */
   async getAverageSessions() {
     const response = await request(
       `${BASE_URL}/user/${this.id}/average-sessions`
@@ -78,6 +105,11 @@ class User {
     }));
   }
 
+  /**
+   * Get user performance data.
+   *
+   * @returns {Promise<Array<Object>>} List of information about user performance.
+   */
   async getPerformance() {
     const response = await request(`${BASE_URL}/user/${this.id}/performance`);
     const { data } = response;
