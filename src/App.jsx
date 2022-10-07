@@ -8,9 +8,9 @@ import User from './services/User';
 /* Components */
 import Layout from './components/Layout';
 import NutrientCard from './components/NutrientCard';
-import ActivityGraph from './components/ActivityGraph';
-import SessionsGraph from './components/SessionsGraph';
-import PerformanceGraph from './components/PerformanceGraph';
+import ActivityChart from './components/charts/ActivityChart';
+import SessionsChart from './components/charts/SessionsChart';
+import PerformanceChart from './components/charts/PerformanceChart';
 
 const USER_ID = 12;
 
@@ -32,7 +32,7 @@ const Header = styled.header`
   }
 `;
 
-const Graphs = styled.main`
+const Charts = styled.main`
   display: grid;
   gap: 24px 30px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -55,10 +55,10 @@ function App() {
   const [userAverageSessions, setUserAverageSessions] = useState();
   const [userPerformance, setUserPerformance] = useState();
 
-  const user = new User(USER_ID);
-
   useEffect(() => {
     async function getData() {
+      const user = new User(USER_ID);
+
       const info = await user.getInfo();
       const nutrients = await user.getNutrients();
       const activity = await user.getActivity();
@@ -85,8 +85,8 @@ function App() {
             <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
           </Header>
         )}
-        <Graphs>
-          {userActivity && <ActivityGraph data={userActivity} />}
+        <Charts>
+          {userActivity && <ActivityChart data={userActivity} />}
           {userInfo && (
             <NutrientCards>
               {userNutrients.map((item) => (
@@ -100,9 +100,9 @@ function App() {
               ))}
             </NutrientCards>
           )}
-          {userAverageSessions && <SessionsGraph data={userAverageSessions} />}
-          {userPerformance && <PerformanceGraph data={userPerformance} />}
-        </Graphs>
+          {userAverageSessions && <SessionsChart data={userAverageSessions} />}
+          {userPerformance && <PerformanceChart data={userPerformance} />}
+        </Charts>
       </Layout>
     </div>
   );

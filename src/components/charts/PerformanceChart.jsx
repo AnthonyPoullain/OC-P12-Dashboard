@@ -25,7 +25,7 @@ const Background = styled.div`
   }
 `;
 
-function PerformanceGraph({ data }) {
+function PerformanceChart({ data }) {
   return (
     <Background>
       <ResponsiveContainer width="100%" height={210}>
@@ -46,7 +46,7 @@ function PerformanceGraph({ data }) {
   );
 }
 
-PerformanceGraph.propTypes = {
+PerformanceChart.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       day: PropTypes.string,
@@ -55,4 +55,4 @@ PerformanceGraph.propTypes = {
   ).isRequired,
 };
 
-export default PerformanceGraph;
+export default PerformanceChart;

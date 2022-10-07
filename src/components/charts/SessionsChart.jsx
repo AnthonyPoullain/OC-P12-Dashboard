@@ -35,7 +35,7 @@ const Background = styled.div`
   }
 `;
 
-function SessionsGraph({ data }) {
+function SessionsChart({ data }) {
   return (
     <Background>
       <h3>Durée moyenne des sessions</h3>
@@ -99,7 +99,7 @@ function SessionsGraph({ data }) {
   );
 }
 
-SessionsGraph.propTypes = {
+SessionsChart.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       day: PropTypes.string.isRequired,
@@ -108,4 +108,4 @@ SessionsGraph.propTypes = {
   ).isRequired,
 };
 
-export default SessionsGraph;
+export default SessionsChart;

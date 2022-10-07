@@ -27,7 +27,7 @@ const Background = styled.div`
   }
 `;
 
-function ActivityGraph({ data }) {
+function ActivityChart({ data }) {
   console.log(data);
   return (
     <Background>
@@ -91,7 +91,7 @@ function ActivityGraph({ data }) {
   );
 }
 
-ActivityGraph.propTypes = {
+ActivityChart.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       day: PropTypes.number.isRequired,
@@ -101,4 +101,4 @@ ActivityGraph.propTypes = {
   ).isRequired,
 };
 
-export default ActivityGraph;
+export default ActivityChart;
