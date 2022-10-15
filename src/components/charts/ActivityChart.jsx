@@ -28,7 +28,6 @@ const Background = styled.div`
 `;
 
 function ActivityChart({ data }) {
-  console.log(data);
   return (
     <Background>
       <h3>Activité quotidienne</h3>

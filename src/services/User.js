@@ -32,7 +32,7 @@ class User {
       firstName: data.userInfos.firstName,
       lastName: data.userInfos.lastName,
       age: data.userInfos.age,
-      todayScore: data.todayScore * 100,
+      todayScore: (data.score || data.todayScore) * 100,
     };
   }
 
@@ -85,6 +85,7 @@ class User {
       day: i + 1,
       bodyweight: session.kilogram,
       calories: session.calories,
+      /* caloriesPercentage: kcal% */
     }));
   }
 
@@ -106,9 +107,16 @@ class User {
   }
 
   /**
+   * @typedef {Object} Nutrient
+   * @property {string} name
+   * @property {number} amount
+   * @property {unit} g
+   */
+
+  /**
    * Get user performance data.
-   *
-   * @returns {Promise<Array<Object>>} List of information about user performance.
+   * @param {Nutrient} nutrient
+   * @returns {Promise<Nutrient>} List of information about user performance.
    */
   async getPerformance() {
     const response = await request(`${BASE_URL}/user/${this.id}/performance`);

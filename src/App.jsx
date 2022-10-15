@@ -11,6 +11,7 @@ import NutrientCard from './components/NutrientCard';
 import ActivityChart from './components/charts/ActivityChart';
 import SessionsChart from './components/charts/SessionsChart';
 import PerformanceChart from './components/charts/PerformanceChart';
+import ScoreChart from './components/charts/ScoreChart';
 
 const USER_ID = 12;
 
@@ -38,7 +39,7 @@ const Charts = styled.main`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     'activity activity activity nutrients'
-    'sessions performance . nutrients';
+    'sessions performance score nutrients';
 `;
 
 const NutrientCards = styled.div`
@@ -102,6 +103,7 @@ function App() {
           )}
           {userAverageSessions && <SessionsChart data={userAverageSessions} />}
           {userPerformance && <PerformanceChart data={userPerformance} />}
+          {userInfo && <ScoreChart value={userInfo.todayScore} />}
         </Charts>
       </Layout>
     </div>
