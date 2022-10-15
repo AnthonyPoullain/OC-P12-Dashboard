@@ -35,10 +35,21 @@ function ActivityChart({ data }) {
         <BarChart barGap={8} data={data}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <YAxis
-            dataKey="calories"
+            dataKey="bodyweight"
             tickLine={false}
             tickCount={3}
             orientation="right"
+            yAxisId="right"
+            domain={['dataMin - 2', 'dataMax + 5']}
+          />
+          <YAxis
+            dataKey="calories"
+            tickLine={false}
+            tickCount={3}
+            orientation="left"
+            yAxisId="left"
+            domain={['dataMin - 100', 'dataMax + 20']}
+            hide
           />
           <XAxis type="category" dataKey="day" tickLine={false} />
           <Tooltip
@@ -75,6 +86,7 @@ function ActivityChart({ data }) {
             dataKey="bodyweight"
             fill="#000"
             radius={[10, 10, 0, 0]}
+            yAxisId="right"
           />
           <Bar
             barSize={7}
@@ -83,6 +95,7 @@ function ActivityChart({ data }) {
             dataKey="calories"
             fill="var(--color-primary)"
             radius={[10, 10, 0, 0]}
+            yAxisId="left"
           />
         </BarChart>
       </ResponsiveContainer>

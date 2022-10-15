@@ -9,6 +9,41 @@ import FatIcon from '../assets/icons/dashboard/icon_fat.svg';
 const BASE_URL = process.env.REACT_APP_API_URL;
 
 /**
+ * @typedef {Object} UserInfo
+ * @property {string} firstName
+ * @property {string} lastName
+ * @property {number} age
+ * @property {number} todayScore
+ */
+
+/**
+ * @typedef {Object} Nutrient
+ * @property {string} name
+ * @property {number} amount
+ * @property {unit} g
+ */
+
+/**
+ * @typedef {Object} ActivityDay
+ * @property {string} date
+ * @property {number} dayNumber (1-7)
+ * @property {number} bodyweight (kg)
+ * @property {calories} kCal
+ */
+
+/**
+ * @typedef {Object} AverageSession
+ * @property {string} day (1st letter: L, M, M, J, V, S, or D)
+ * @property {number} sessionLength
+ */
+
+/**
+ * @typedef {Object} Performance
+ * @property {number} value
+ * @property {string} kind
+ */
+
+/**
  * Class representing a user.
  */
 class User {
@@ -23,7 +58,7 @@ class User {
   /**
    * Get basic user data.
    *
-   * @returns {Promise<Object>} Basic user information.
+   * @returns {Promise<UserInfo>} Basic user information.
    */
   async getInfo() {
     const response = await request(`${BASE_URL}/user/${this.id}`);
@@ -39,7 +74,7 @@ class User {
   /**
    * Get user calories & macronutrients data.
    *
-   * @returns {Promise<Array<Object>>} List of information about calories & macronutrients.
+   * @returns {Promise<Nutrient[]>} List of information about calories & macronutrients.
    */
   async getNutrients() {
     const response = await request(`${BASE_URL}/user/${this.id}`);
@@ -75,7 +110,7 @@ class User {
   /**
    * Get user activity data.
    *
-   * @returns {Promise<Array<Object>>} List of informaton about user sessions.
+   * @returns {Promise<ActivityDay[]>} List of informaton about user sessions.
    */
   async getActivity() {
     const response = await request(`${BASE_URL}/user/${this.id}/activity`);
@@ -92,7 +127,7 @@ class User {
   /**
    * Get user sessions data.
    *
-   * @returns {Promise<Array<Object>>} List of information about user sessions.
+   * @returns {Promise<AverageSession[]>} List of information about user sessions.
    */
   async getAverageSessions() {
     const response = await request(
@@ -107,16 +142,9 @@ class User {
   }
 
   /**
-   * @typedef {Object} Nutrient
-   * @property {string} name
-   * @property {number} amount
-   * @property {unit} g
-   */
-
-  /**
    * Get user performance data.
-   * @param {Nutrient} nutrient
-   * @returns {Promise<Nutrient>} List of information about user performance.
+   *
+   * @returns {Promise<Performance[]>} List of information about user performance.
    */
   async getPerformance() {
     const response = await request(`${BASE_URL}/user/${this.id}/performance`);
