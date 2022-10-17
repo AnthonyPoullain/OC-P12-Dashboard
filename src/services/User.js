@@ -110,7 +110,7 @@ class User {
   /**
    * Get user activity data.
    *
-   * @returns {Promise<ActivityDay[]>} List of informaton about user sessions.
+   * @returns {Promise<ActivityDay[]>} List of information about user sessions.
    */
   async getActivity() {
     const response = await request(`${BASE_URL}/user/${this.id}/activity`);
@@ -120,7 +120,6 @@ class User {
       day: i + 1,
       bodyweight: session.kilogram,
       calories: session.calories,
-      /* caloriesPercentage: kcal% */
     }));
   }
 
