@@ -35,7 +35,8 @@ const Header = styled.header`
 
 const Charts = styled.main`
   display: grid;
-  gap: 24px 30px;
+  gap: 24px 2.07vw;
+  max-width: fit-content;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     'activity activity activity nutrients'
@@ -50,64 +51,64 @@ const NutrientCards = styled.div`
 `;
 
 function App() {
-  const [userInfo, setUserInfo] = useState();
-  const [userNutrients, setUserNutrients] = useState();
-  const [userActivity, setUserActivity] = useState();
-  const [userAverageSessions, setUserAverageSessions] = useState();
-  const [userPerformance, setUserPerformance] = useState();
+	const [userInfo, setUserInfo] = useState();
+	const [userNutrients, setUserNutrients] = useState();
+	const [userActivity, setUserActivity] = useState();
+	const [userAverageSessions, setUserAverageSessions] = useState();
+	const [userPerformance, setUserPerformance] = useState();
 
-  useEffect(() => {
-    async function getData() {
-      const user = new User(USER_ID);
+	useEffect(() => {
+		async function getData() {
+			const user = new User(USER_ID);
 
-      const info = await user.getInfo();
-      const nutrients = await user.getNutrients();
-      const activity = await user.getActivity();
-      const averageSessions = await user.getAverageSessions();
-      const performance = await user.getPerformance();
+			const info = await user.getInfo();
+			const nutrients = await user.getNutrients();
+			const activity = await user.getActivity();
+			const averageSessions = await user.getAverageSessions();
+			const performance = await user.getPerformance();
 
-      setUserInfo(info);
-      setUserNutrients(nutrients);
-      setUserActivity(activity);
-      setUserAverageSessions(averageSessions);
-      setUserPerformance(performance);
-    }
-    getData();
-  }, []);
+			setUserInfo(info);
+			setUserNutrients(nutrients);
+			setUserActivity(activity);
+			setUserAverageSessions(averageSessions);
+			setUserPerformance(performance);
+		}
+		getData();
+	}, []);
 
-  return (
-    <div className="App">
-      <Layout>
-        {userInfo && (
-          <Header>
-            <h1>
-              Bonjour <strong>{userInfo.firstName}</strong>
-            </h1>
-            <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
-          </Header>
-        )}
-        <Charts>
-          {userActivity && <ActivityChart data={userActivity} />}
-          {userInfo && (
-            <NutrientCards>
-              {userNutrients.map((item) => (
-                <NutrientCard
-                  icon={item.icon}
-                  amount={item.amount}
-                  unit={item.unit}
-                  label={item.label}
-                  key={item.label}
-                />
-              ))}
-            </NutrientCards>
-          )}
-          {userAverageSessions && <SessionsChart data={userAverageSessions} />}
-          {userPerformance && <PerformanceChart data={userPerformance} />}
-          {userInfo && <ScoreChart value={userInfo.todayScore} />}
-        </Charts>
-      </Layout>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Layout>
+				{userInfo && (
+					<Header>
+						<h1>
+							Bonjour <strong>{userInfo.firstName}</strong>
+						</h1>
+						<h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
+					</Header>
+				)}
+				<Charts>
+					{userActivity && <ActivityChart data={userActivity} />}
+					{userInfo && (
+						<NutrientCards>
+							{userNutrients.map((item) => (
+								<NutrientCard
+									icon={item.icon}
+									amount={item.amount}
+									unit={item.unit}
+									label={item.label}
+									key={item.label}
+								/>
+							))}
+						</NutrientCards>
+					)}
+					{userAverageSessions && <SessionsChart data={userAverageSessions} />}
+					{userPerformance && <PerformanceChart data={userPerformance} />}
+					{userInfo && <ScoreChart value={userInfo.todayScore} />}
+				</Charts>
+			</Layout>
+		</div>
+	);
 }
 
 export default App;

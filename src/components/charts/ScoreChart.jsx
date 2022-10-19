@@ -5,7 +5,8 @@ const Background = styled.div`
   background-color: #fbfbfb;
   padding: 24px 0;
   border-radius: 5px;
-  max-height: 320px;
+  height: 263px;
+  width: 100%;
   max-width: 258px;
   position: relative;
   grid-area: score;
@@ -89,26 +90,26 @@ const Percentage = styled.div`
 `;
 
 function ScoreChart({ value }) {
-  return (
-    <Background>
-      <h3>Score</h3>
-      <ProgressCircle>
-        <div className="percent">
-          <svg>
-            <circle cx="105" cy="105" r="110" style={{ '--percent': -value }} />
-          </svg>
-          <Percentage>
-            <h3>{value}% </h3>
-            <span>de votre objectif</span>
-          </Percentage>
-        </div>
-      </ProgressCircle>
-    </Background>
-  );
+	return (
+		<Background>
+			<h3>Score</h3>
+			<ProgressCircle>
+				<div className="percent">
+					<svg>
+						<circle cx="105" cy="105" r="110" style={{ '--percent': -value }} />
+					</svg>
+					<Percentage>
+						<h3>{value}% </h3>
+						<span>de votre objectif</span>
+					</Percentage>
+				</div>
+			</ProgressCircle>
+		</Background>
+	);
 }
 
 ScoreChart.propTypes = {
-  value: PropTypes.number.isRequired,
+	value: PropTypes.number.isRequired,
 };
 
 export default ScoreChart;

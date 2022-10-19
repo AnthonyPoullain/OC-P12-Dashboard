@@ -4,15 +4,16 @@ import Logo from '../assets/logo/sportsee_logo.svg';
 
 // Add or delete navigation links here
 const NAV_LINKS = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Profil', href: '/' },
-  { label: 'Réglage', href: '/' },
-  { label: 'Communauté', href: '/' },
+	{ label: 'Accueil', href: '/' },
+	{ label: 'Profil', href: '/' },
+	{ label: 'Réglage', href: '/' },
+	{ label: 'Communauté', href: '/' },
 ];
 
 const Header = styled.header`
   height: 91px;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   padding-left: 30px;
@@ -40,20 +41,20 @@ const Links = styled.nav`
 `;
 
 function Nav() {
-  return (
-    <Header className="nav">
-      <a href="/" className="nav__logo">
-        <MainLogo src={Logo} alt="SportSee Logo" />
-      </a>
-      <Links className="nav__links">
-        {NAV_LINKS.map((item) => (
-          <a href={item.href} key={item.label}>
-            {item.label}
-          </a>
-        ))}
-      </Links>
-    </Header>
-  );
+	return (
+		<Header className="nav">
+			<a href="/" className="nav__logo">
+				<MainLogo src={Logo} alt="SportSee Logo" />
+			</a>
+			<Links className="nav__links">
+				{NAV_LINKS.map((item) => (
+					<a href={item.href} key={item.label}>
+						{item.label}
+					</a>
+				))}
+			</Links>
+		</Header>
+	);
 }
 
 export default Nav;
