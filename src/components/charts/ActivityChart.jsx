@@ -27,7 +27,53 @@ const Background = styled.div`
     line-height: 2;
     position: absolute;
   }
+
+  line {
+    stroke: #dedede;
+  }
+
+  text {
+    font-weight: 500;
+    fill: #9b9eac;
+  }
+
+  .recharts-legend-wrapper ul {
+    display: flex;
+    justify-content: flex-end;
+    color: #74798c;
+    font-size: 14px;
+    font-weight: 500;
+
+    li {
+      margin-right: 32px;
+
+      &:before {
+        content: '·';
+        margin-right: 7px;
+        font-size: 60px;
+        vertical-align: middle;
+        line-height: 20px;
+        color: #000;
+      }
+    }
+
+    li:last-child:before {
+      color: red;
+    }
+  }
 `;
+
+const renderLegend = (props) => {
+	const { payload } = props;
+
+	return (
+		<ul>
+			{payload.map((entry) => (
+				<li key={`item-${entry.value}`}>{entry.value}</li>
+			))}
+		</ul>
+	);
+};
 
 function ActivityChart({ data }) {
 	return (
@@ -55,7 +101,7 @@ function ActivityChart({ data }) {
 					/>
 					<XAxis type="category" dataKey="day" tickLine={false} />
 					<Tooltip
-						cursor={{ fill: '#C4C4C4' }}
+						cursor={{ fill: '#C4C4C4', fillOpacity: '50%' }}
 						offset={20}
 						contentStyle={{
 							backgroundColor: 'var(--color-primary)',
@@ -80,6 +126,8 @@ function ActivityChart({ data }) {
 						height={50}
 						align="right"
 						verticalAlign="top"
+						iconSize={8}
+						content={renderLegend}
 					/>
 					<Bar
 						barSize={7}
