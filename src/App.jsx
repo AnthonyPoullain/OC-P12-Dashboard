@@ -36,7 +36,6 @@ const Header = styled.header`
 const Charts = styled.main`
   display: grid;
   gap: 24px 2.07vw;
-  max-width: fit-content;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     'activity activity activity nutrients'

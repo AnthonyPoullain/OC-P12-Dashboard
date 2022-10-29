@@ -19,6 +19,7 @@ const Background = styled.div`
   position: relative;
   overflow: visible;
   grid-area: performance;
+  overflow: hidden;
 
   tspan {
     font-size: 12px;

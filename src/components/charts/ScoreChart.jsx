@@ -10,6 +10,7 @@ const Background = styled.div`
   max-width: 258px;
   position: relative;
   grid-area: score;
+  overflow: hidden;
 
   h3 {
     color: #20253a;

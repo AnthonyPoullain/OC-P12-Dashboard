@@ -8,17 +8,37 @@ import {
 	Tooltip,
 	XAxis,
 	YAxis,
+	Rectangle,
 } from 'recharts';
 
 const Background = styled.div`
   background-color: var(--color-primary);
-  padding: 24px 0;
   border-radius: 5px;
   height: 263px;
   width: 100%;
   max-width: 258px;
   position: relative;
   grid-area: sessions;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 10%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
 
   h3 {
     color: #fff;
@@ -28,19 +48,59 @@ const Background = styled.div`
     line-height: 24px;
     position: absolute;
     left: 34px;
+    top: 24px;
     max-width: 150px;
+    z-index: 2;
   }
 
-  .recharts-line path {
-    /* transform: scaleX(1.2) translateX(-20px); */
+  .recharts-wrapper {
+    width: 100%;
+  }
+
+  .recharts-rectangle {
+    transform: translateY(-5px);
+    z-index: -1;
+    opacity: 0.1;
+  }
+
+  .recharts-surface {
+    transform: scaleX(1.1);
+    /* margin-left: -5px; */
   }
 `;
 
+function CustomCursor(props) {
+	/* eslint-disable-next-line */
+	const { points, width, height, stroke } = props;
+	/* eslint-disable-next-line */
+	const { x, y } = points[0];
+	/* const { x1, y1 } = points[1]; */
+	return (
+		<Rectangle
+			fill="#000"
+			stroke="#000"
+			x={x}
+			y={y}
+			width={width}
+			height={263}
+		/>
+	);
+}
+
 function SessionsChart({ data }) {
+	const modifiedData = data;
+	if (modifiedData.length === 7) {
+		modifiedData.unshift({ day: '', sessionDuration: data[0].sessionDuration });
+		modifiedData.push({
+			day: '',
+			sessionDuration: data[data.length - 1].sessionDuration,
+		});
+	}
+
 	return (
 		<Background>
 			<h3>Durée moyenne des sessions</h3>
-			<ResponsiveContainer width="100%" height={216}>
+			<ResponsiveContainer width="100%">
 				<LineChart data={data}>
 					<CartesianGrid vertical={false} horizontal={false} />
 					<YAxis
@@ -48,16 +108,15 @@ function SessionsChart({ data }) {
 						tickLine={false}
 						tickCount={3}
 						orientation="right"
-						domain={['dataMin - 20', 'dataMax + 20']}
+						domain={['dataMin - 20', 'dataMax + 50']}
 						width={0}
 					/>
 					<XAxis
-						style={{ fill: '#fff', opacity: '.5' }}
+						style={{ fill: '#fff', opacity: '.5', fontSize: '12px' }}
 						type="category"
 						dataKey="day"
 						tickLine={false}
 						axisLine={false}
-						padding={{ left: 14, right: 14 }}
 					/>
 					<Tooltip
 						offset={10}
@@ -78,10 +137,16 @@ function SessionsChart({ data }) {
 						labelFormatter={() => ''}
 						separator=""
 						formatter={(value) => ['', value]}
-						cursor={{ stroke: 'rgba(0,0,0,.1)', strokeWidth: 2 }}
+						cursor={<CustomCursor />}
 					/>
+					<defs>
+						<linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+							<stop offset="0%" stopColor="rgba(255,255,255,30%)" />
+							<stop offset="100%" stopColor="rgba(255,255,255,100%)" />
+						</linearGradient>
+					</defs>
 					<Line
-						style={{ stroke: '#fff' }}
+						style={{ stroke: 'url(#linear)' }}
 						dot={false}
 						activeDot={{
 							fill: '#fff',
