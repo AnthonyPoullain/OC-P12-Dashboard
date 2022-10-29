@@ -65,16 +65,12 @@ const Background = styled.div`
 
   .recharts-surface {
     transform: scaleX(1.1);
-    /* margin-left: -5px; */
   }
 `;
 
 function CustomCursor(props) {
-	/* eslint-disable-next-line */
-	const { points, width, height, stroke } = props;
-	/* eslint-disable-next-line */
-	const { x, y } = points[0];
-	/* const { x1, y1 } = points[1]; */
+	const { points, width } = props; /* eslint-disable-line react/prop-types */
+	const { x, y } = points[0]; /* eslint-disable-line react/prop-types */
 	return (
 		<Rectangle
 			fill="#000"
