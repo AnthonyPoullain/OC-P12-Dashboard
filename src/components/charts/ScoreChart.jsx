@@ -18,8 +18,8 @@ const Background = styled.div`
     font-size: 15px;
     line-height: 24px;
     position: absolute;
-    left: 34px;
     max-width: 150px;
+    left: 34px;
   }
 `;
 
@@ -81,7 +81,9 @@ const Percentage = styled.div`
   justify-content: center;
   max-width: 110px;
 
-  h3 {
+  h4 {
+    position: absolute;
+    text-align: center;
     font-size: 26px;
     font-weight: 700;
     color: #282d30;
@@ -103,7 +105,7 @@ function ScoreChart({ value }) {
 						<circle cx="105" cy="105" r="110" style={{ '--percent': -value }} />
 					</svg>
 					<Percentage>
-						<h3>{value}% </h3>
+						<h4>{value}%</h4>
 						<span>de votre objectif</span>
 					</Percentage>
 				</div>

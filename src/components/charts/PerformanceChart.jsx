@@ -34,7 +34,7 @@ function PerformanceChart({ data }) {
 				<RadarChart
 					startAngle={-150}
 					endAngle={210}
-					margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
+					margin={{ top: 5, right: 35, bottom: 5, left: 35 }}
 					data={data}
 				>
 					<PolarGrid polarRadius={[10, 20, 40, 60, 80]} radialLines={false} />
