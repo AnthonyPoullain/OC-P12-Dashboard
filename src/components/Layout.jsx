@@ -5,7 +5,7 @@ import Nav from './Nav';
 import Sidebar from './Sidebar';
 
 const MainContent = styled.main`
-  margin: 70px 90px 0px clamp(150px, 18vw, 226px);
+  margin: 70px 7vw 0px calc(7vw + 117px);
 `;
 
 function Layout({ children }) {

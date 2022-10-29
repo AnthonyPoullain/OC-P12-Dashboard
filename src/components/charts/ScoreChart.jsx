@@ -29,6 +29,8 @@ const ProgressCircle = styled.div`
   justify-content: center;
   flex-direction: column;
   border-radius: 5px;
+  width: 100%;
+  ascpect-ratio: 1/1;
 
   svg {
     position: relative;
@@ -38,6 +40,7 @@ const ProgressCircle = styled.div`
     background-color: #fff;
     border-radius: 50%;
     overflow: visible;
+    margin-top: 2%;
   }
 
   svg circle {

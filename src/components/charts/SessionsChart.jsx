@@ -64,7 +64,11 @@ const Background = styled.div`
   }
 
   .recharts-surface {
-    transform: scaleX(1.1);
+    transform: scale(1.1);
+  }
+
+  .xAxis {
+    transform: translateY(-10px);
   }
 `;
 
