@@ -8,8 +8,13 @@
  * @returns {Promise} Promise Object
  */
 async function request(URL) {
-  const response = await fetch(URL);
-  return response.json();
+	try {
+		const response = await fetch(URL);
+		return response.json();
+	} catch (err) {
+		console.error(err);
+	}
+	return null;
 }
 
 export default request;

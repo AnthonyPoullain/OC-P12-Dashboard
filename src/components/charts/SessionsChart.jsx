@@ -24,7 +24,7 @@ const Background = styled.div`
   &::before,
   &::after {
     content: '';
-    width: 10%;
+    width: calc(10% - 5px);
     height: 100%;
     background-color: transparent;
     position: absolute;
