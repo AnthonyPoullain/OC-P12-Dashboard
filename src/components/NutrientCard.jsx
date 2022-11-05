@@ -31,7 +31,21 @@ const Card = styled.div`
   }
 `;
 
-function NutrientCard({ icon, amount, unit, label }) {
+/**
+ * Component displaying the user's nutrients cards.
+ *
+ * @component
+ * @category Components
+ * @subcategory Cards
+ *
+ * @example
+ * const nutrient = {icon: "example.png", amount: 2000, unit: "kCal", label: "Calories"}
+ * return (
+ *   <NutrientCard data={nutrient} />
+ * )
+ */
+function NutrientCard({ data }) {
+	const { icon, amount, unit, label } = data;
 	return (
 		<Card>
 			<img src={icon} alt={`${label} icon`} />
@@ -49,10 +63,12 @@ function NutrientCard({ icon, amount, unit, label }) {
 }
 
 NutrientCard.propTypes = {
-	icon: PropTypes.string.isRequired,
-	amount: PropTypes.number.isRequired,
-	unit: PropTypes.string.isRequired,
-	label: PropTypes.string.isRequired,
+	data: PropTypes.shape({
+		icon: PropTypes.string.isRequired,
+		amount: PropTypes.number.isRequired,
+		unit: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired,
+	}).isRequired,
 };
 
 export default NutrientCard;

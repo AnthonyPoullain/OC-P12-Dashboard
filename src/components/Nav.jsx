@@ -40,6 +40,13 @@ const Links = styled.nav`
   }
 `;
 
+/**
+ * Component displaying main navigation.
+ *
+ * @component
+ * @category Components
+ * @subcategory Layout
+ */
 function Nav() {
 	return (
 		<Header className="nav">

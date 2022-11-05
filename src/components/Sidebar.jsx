@@ -8,10 +8,10 @@ import liftingIcon from '../assets/icons/sidebar/icon_lifting.svg';
 
 // Add or delete sidebar icons here
 const SIDEBAR_ICONS = [
-  { icon: yogaIcon, alt: 'Yoga' },
-  { icon: swimmingIcon, alt: 'Swimming' },
-  { icon: cyclingIcon, alt: 'Cycling' },
-  { icon: liftingIcon, alt: 'Strength Training' },
+	{ icon: yogaIcon, alt: 'Yoga' },
+	{ icon: swimmingIcon, alt: 'Swimming' },
+	{ icon: cyclingIcon, alt: 'Cycling' },
+	{ icon: liftingIcon, alt: 'Strength Training' },
 ];
 
 const SideBar = styled.aside`
@@ -35,17 +35,24 @@ const Copyright = styled.div`
   left: -18px;
 `;
 
+/**
+ * Component displaying main sidebar.
+ *
+ * @component
+ * @category Components
+ * @subcategory Layout
+ */
 function Sidebar() {
-  return (
-    <SideBar>
-      <div className="icons">
-        {SIDEBAR_ICONS.map((item) => (
-          <ActivityIcon icon={item.icon} alt={item.alt} key={item.alt} />
-        ))}
-      </div>
-      <Copyright>Copyright, SportSee 2020</Copyright>
-    </SideBar>
-  );
+	return (
+		<SideBar>
+			<div className="icons">
+				{SIDEBAR_ICONS.map((item) => (
+					<ActivityIcon icon={item.icon} alt={item.alt} key={item.alt} />
+				))}
+			</div>
+			<Copyright>Copyright, SportSee 2020</Copyright>
+		</SideBar>
+	);
 }
 
 export default Sidebar;

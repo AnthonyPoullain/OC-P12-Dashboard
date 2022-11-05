@@ -27,6 +27,26 @@ const Background = styled.div`
   }
 `;
 
+/**
+ * Component displaying the user's performance chart.
+ *
+ * @category Components
+ * @subcategory Charts
+ *
+ * @component
+ * @example
+ * const performance = [
+ *   {value: 80, kind: "Cardio"},
+ *   {value: 120, kind: "Energie"},
+ *   {value: 140, kind: "Endurance"},
+ *   {value: 50, kind: "Force"},
+ *   {value: 200, kind: "Vitesse"},
+ *   {value: 90, kind: "Intensité"},
+ * ]
+ * return (
+ *   <PerformanceChart data={performance} />
+ * )
+ */
 function PerformanceChart({ data }) {
 	return (
 		<Background>

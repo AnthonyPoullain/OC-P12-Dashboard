@@ -18,19 +18,33 @@ const Icon = styled.div`
   }
 `;
 
+/**
+ * Component displaying activity icons.
+ *
+ * @component
+ * @category Components
+ * @subcategory Icons
+ *
+ * @example
+ * const icon = "example.png";
+ * const alt = "Example";
+ * return (
+ *   <ActivityIcon icon={icon} alt={alt} />
+ * )
+ */
 function ActivityIcon({ icon, alt }) {
-  return (
-    <a href="/">
-      <Icon>
-        <img src={icon} alt={alt} />
-      </Icon>
-    </a>
-  );
+	return (
+		<a href="/">
+			<Icon>
+				<img src={icon} alt={alt} />
+			</Icon>
+		</a>
+	);
 }
 
 ActivityIcon.propTypes = {
-  icon: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+	icon: PropTypes.string.isRequired,
+	alt: PropTypes.string.isRequired,
 };
 
 export default ActivityIcon;

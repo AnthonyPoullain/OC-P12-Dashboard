@@ -91,13 +91,7 @@ function App() {
 					{userInfo && (
 						<NutrientCards>
 							{userNutrients.map((item) => (
-								<NutrientCard
-									icon={item.icon}
-									amount={item.amount}
-									unit={item.unit}
-									label={item.label}
-									key={item.label}
-								/>
+								<NutrientCard key={item.label} data={item} />
 							))}
 						</NutrientCards>
 					)}

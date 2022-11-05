@@ -75,6 +75,27 @@ const renderLegend = (props) => {
 	);
 };
 
+/**
+ * Component displaying the user's activity chart.
+ *
+ * @component
+ * @category Components
+ * @subcategory Charts
+ *
+ * @example
+ * const activityDays = [
+ *   {date: "2020-07-01", day: 1, bodyweight: 80, calories: 240},
+ *   {date: "2020-07-02", day: 2, bodyweight: 80, calories: 220},
+ *   {date: "2020-07-03", day: 3, bodyweight: 81, calories: 280},
+ *   {date: "2020-07-04", day: 4, bodyweight: 81, calories: 290},
+ *   {date: "2020-07-05", day: 5, bodyweight: 80, calories: 160},
+ *   {date: "2020-07-06", day: 6, bodyweight: 78, calories: 162},
+ *   {date: "2020-07-07", day: 7, bodyweight: 76, calories: 390},
+ * ]
+ * return (
+ *   <ActivityChart data={activityDays} />
+ * )
+ */
 function ActivityChart({ data }) {
 	return (
 		<Background>
