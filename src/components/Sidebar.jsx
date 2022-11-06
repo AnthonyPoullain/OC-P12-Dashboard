@@ -1,18 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ActivityIcon from './ActivityIcon';
-import yogaIcon from '../assets/icons/sidebar/icon_yoga.svg';
-import swimmingIcon from '../assets/icons/sidebar/icon_swimming.svg';
-import cyclingIcon from '../assets/icons/sidebar/icon_cycling.svg';
-import liftingIcon from '../assets/icons/sidebar/icon_lifting.svg';
-
-// Add or delete sidebar icons here
-const SIDEBAR_ICONS = [
-	{ icon: yogaIcon, alt: 'Yoga' },
-	{ icon: swimmingIcon, alt: 'Swimming' },
-	{ icon: cyclingIcon, alt: 'Cycling' },
-	{ icon: liftingIcon, alt: 'Strength Training' },
-];
 
 const SideBar = styled.aside`
   width: 117px;
@@ -42,11 +31,11 @@ const Copyright = styled.div`
  * @category Components
  * @subcategory Layout
  */
-function Sidebar() {
+function Sidebar({ icons }) {
 	return (
 		<SideBar>
 			<div className="icons">
-				{SIDEBAR_ICONS.map((item) => (
+				{icons.map((item) => (
 					<ActivityIcon icon={item.icon} alt={item.alt} key={item.alt} />
 				))}
 			</div>
@@ -54,5 +43,14 @@ function Sidebar() {
 		</SideBar>
 	);
 }
+
+Sidebar.propTypes = {
+	icons: PropTypes.arrayOf(
+		PropTypes.shape({
+			icon: PropTypes.string.isRequired,
+			alt: PropTypes.string.isRequired,
+		})
+	).isRequired,
+};
 
 export default Sidebar;

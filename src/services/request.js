@@ -13,8 +13,8 @@ async function request(URL) {
 		return response.json();
 	} catch (err) {
 		console.error(err);
+		return null;
 	}
-	return null;
 }
 
 export default request;

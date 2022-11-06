@@ -1,14 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Logo from '../assets/logo/sportsee_logo.svg';
-
-// Add or delete navigation links here
-const NAV_LINKS = [
-	{ label: 'Accueil', href: '/' },
-	{ label: 'Profil', href: '/' },
-	{ label: 'Réglage', href: '/' },
-	{ label: 'Communauté', href: '/' },
-];
 
 const Header = styled.header`
   height: 91px;
@@ -47,14 +40,14 @@ const Links = styled.nav`
  * @category Components
  * @subcategory Layout
  */
-function Nav() {
+function Nav({ routes }) {
 	return (
 		<Header className="nav">
 			<a href="/" className="nav__logo">
 				<MainLogo src={Logo} alt="SportSee Logo" />
 			</a>
 			<Links className="nav__links">
-				{NAV_LINKS.map((item) => (
+				{routes.map((item) => (
 					<a href={item.href} key={item.label}>
 						{item.label}
 					</a>
@@ -63,5 +56,14 @@ function Nav() {
 		</Header>
 	);
 }
+
+Nav.propTypes = {
+	routes: PropTypes.arrayOf(
+		PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			href: PropTypes.string.isRequired,
+		})
+	).isRequired,
+};
 
 export default Nav;
