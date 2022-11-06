@@ -30,6 +30,17 @@ const Copyright = styled.div`
  * @component
  * @category Components
  * @subcategory Layout
+ *
+ * @example
+ * const icons = [
+ *   { icon: "yogaIcon.jpg", alt: "Yoga" },
+ *   { icon: "swimmingIcon.jpg", alt: "Swimming" },
+ *   { icon: "cyclingIcon.jpg", alt: "Cycling" },
+ *   { icon: "liftingIcon.jpg", alt: "Strength Training" },
+ * ]
+ * return (
+ *   <Sidebar icons={icons} />
+ * )
  */
 function Sidebar({ icons }) {
 	return (
