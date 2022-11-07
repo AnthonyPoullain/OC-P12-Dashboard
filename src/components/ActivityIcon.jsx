@@ -21,16 +21,11 @@ const Icon = styled.div`
 /**
  * Component displaying activity icons.
  *
- * @component
- * @category Components
- * @subcategory Icons
- *
  * @example
  * const icon = "example.png";
  * const alt = "Example";
- * return (
- *   <ActivityIcon icon={icon} alt={alt} />
- * )
+ *
+ * <ActivityIcon icon={icon} alt={alt} />
  */
 function ActivityIcon({ icon, alt }) {
 	return (

@@ -27,10 +27,6 @@ const Copyright = styled.div`
 /**
  * Component displaying main sidebar.
  *
- * @component
- * @category Components
- * @subcategory Layout
- *
  * @example
  * const icons = [
  *   { icon: "yogaIcon.jpg", alt: "Yoga" },
@@ -38,9 +34,8 @@ const Copyright = styled.div`
  *   { icon: "cyclingIcon.jpg", alt: "Cycling" },
  *   { icon: "liftingIcon.jpg", alt: "Strength Training" },
  * ]
- * return (
- *   <Sidebar icons={icons} />
- * )
+ *
+ * <Sidebar icons={icons} />
  */
 function Sidebar({ icons }) {
 	return (

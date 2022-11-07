@@ -98,15 +98,10 @@ const Percentage = styled.div`
 /**
  * Component displaying the user's daily score chart.
  *
- * @component
- * @category Components
- * @subcategory Charts
- *
  * @example
  * const score = 12
- * return (
- *   <ScoreChart value={score} />
- * )
+ *
+ * <ScoreChart value={score} />
  */
 function ScoreChart({ value }) {
 	return (

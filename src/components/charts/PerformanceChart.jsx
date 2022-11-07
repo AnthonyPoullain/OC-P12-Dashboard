@@ -30,10 +30,6 @@ const Background = styled.div`
 /**
  * Component displaying the user's performance chart.
  *
- * @category Components
- * @subcategory Charts
- *
- * @component
  * @example
  * const performance = [
  *   {value: 80, kind: "Cardio"},
@@ -43,9 +39,8 @@ const Background = styled.div`
  *   {value: 200, kind: "Vitesse"},
  *   {value: 90, kind: "Intensité"},
  * ]
- * return (
- *   <PerformanceChart data={performance} />
- * )
+ *
+ * <PerformanceChart data={performance} />
  */
 function PerformanceChart({ data }) {
 	return (

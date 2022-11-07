@@ -36,10 +36,6 @@ const Links = styled.nav`
 /**
  * Component displaying main navigation.
  *
- * @component
- * @category Components
- * @subcategory Layout
- *
  * @example
  * const routes = [
  *   { label: "Accueil", href: "/" },
@@ -47,9 +43,8 @@ const Links = styled.nav`
  *   { label: "Réglage", href: "/" },
  *   { label: "Communauté", href: "/" },
  * ]
- * return (
- *   <Nav routes={routes} />
- * )
+ *
+ * <Nav routes={routes} />
  */
 function Nav({ routes }) {
 	return (

@@ -34,15 +34,10 @@ const Card = styled.div`
 /**
  * Component displaying the user's nutrients cards.
  *
- * @component
- * @category Components
- * @subcategory Cards
- *
  * @example
  * const nutrient = {icon: "example.png", amount: 2000, unit: "kCal", label: "Calories"}
- * return (
- *   <NutrientCard data={nutrient} />
- * )
+ *
+ * <NutrientCard data={nutrient} />
  */
 function NutrientCard({ data }) {
 	const { icon, amount, unit, label } = data;

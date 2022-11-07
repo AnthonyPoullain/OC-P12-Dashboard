@@ -1,34 +1,53 @@
 {
-  "tags": {
-      "allowUnknownTags": true
-  },
-  "source": {
-      "include": ["./src"],
-      "includePattern": "\\.(vue|js|jsx)$"
-  },
-  "plugins": [
-      "better-docs/component",
-      "better-docs/category",
-      "plugins/markdown"
-  ],
-  "opts": {
-      "encoding": "utf8",
-      "destination": "docs/",
-      "recurse": true,
-      "verbose": true,
-      "readme": "./readme.md",
-      "template": "node_modules/better-docs"
-  },
-  "templates": {
-      "better-docs": {
-            "name": "Sportsee documentation",
-            "navigation": [
-                {
-                    "label": "GitHub",
-                    "href": "https://github.com/AnthonyPoullain/OC-P12-Dashboard"
-                }
-            ]
-      },
-      "search": true
-  }
+	"source": {
+		"include": [
+			"src",
+			"README.md",
+			"package.json"
+		],
+		"includePattern": "\\.(vue|js|jsx)$"
+	},
+	"plugins": [
+		"plugins/markdown"
+	],
+	"opts": {
+		"encoding": "utf8",
+		"readme": "./README.md",
+		"destination": "docs/",
+		"recurse": true,
+		"verbose": true,
+		"template": "./node_modules/clean-jsdoc-theme",
+		"theme_opts": {
+			"homepageTitle": "Sportsee documentation",
+			"title": "Sportsee documentation",
+			"search": false,
+			"default_theme": "dark",
+			"menu": [
+				{
+					"title": "README",
+					"link": "index.html"
+				},
+				{
+					"title": "Github",
+					"link": "https://github.com/AnthonyPoullain/OC-P12-Dashboard",
+					"target": "_blank"
+				}
+			],
+			"sections": [
+				"Modules",
+				"Classes",
+				"Externals",
+				"Events",
+				"Namespaces",
+				"Mixins",
+				"Tutorials",
+				"Interfaces",
+				"Global"
+			]
+		}
+	},
+	"markdown": {
+		"hardwrap": false,
+		"idInHeadings": true
+	}
 }

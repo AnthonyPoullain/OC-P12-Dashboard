@@ -90,10 +90,6 @@ function CustomCursor(props) {
 /**
  * Component displaying the user's sessions chart.
  *
- * @component
- * @category Components
- * @subcategory Charts
- *
  * @example
  * const sessions = [
  *   {"day": 1, "sessionLength": 30},
@@ -104,9 +100,8 @@ function CustomCursor(props) {
  *   {"day": 6, "sessionLength": 0},
  *   {"day": 7, "sessionLength": 60}
  * ]
- * return (
- *   <SessionsChart data={sessions} />
- * )
+ *
+ * <SessionsChart data={sessions} />
  */
 function SessionsChart({ data }) {
 	const modifiedData = data;

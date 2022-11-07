@@ -31,10 +31,6 @@ const MainContent = styled.main`
 
 /**
  * Component for the main layout of the page.
- *
- * @component
- * @category Components
- * @subcategory Layout
  */
 function Layout({ children }) {
 	return (
