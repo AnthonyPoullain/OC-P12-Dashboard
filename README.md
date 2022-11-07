@@ -17,10 +17,9 @@ Follow the installation instructions below.
 - [NPM](https://www.npmjs.com/)
 
 ### 3.2 Launching the project
-1. Fork the repository
-2. Clone it on your computer.
-3. The `npm install` command will allow you to install the dependencies.
-4. The `npm run start` command will allow you to run the React app.
-5. *(Optional)* The `npm run docs` command will allow you to generate the jsdoc documentation. It will be located in *docs/index.html*
+1. Clone this repository.
+2. The `npm install` command will allow you to install the dependencies.
+3. The `npm run start` command will allow you to run the React app.
+4. *(Optional)* The `npm run docs` command will allow you to generate the jsdoc documentation.
 
 > ***Note:** The backend will run on port **3000**. To allow for both the backend and the frontend to run concurrently, the default React port has been changed to port **5000**. You can access these settings in the .env file contained in the root directory.*
